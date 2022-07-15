@@ -64,11 +64,22 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="Informe  o valor base"
-            android:inputType="textPersonName"
+            android:inputType="number|numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.588"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <Button
+            android:id="@+id/bt_calcular"
+            android:layout_width="263dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/personalizado"
+            android:text="Calcular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_valorA" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

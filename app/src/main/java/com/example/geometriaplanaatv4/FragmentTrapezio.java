@@ -52,6 +52,7 @@ public class FragmentTrapezio extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -60,5 +61,12 @@ public class FragmentTrapezio extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_trapezio, container, false);
+    }
+    public class valores {
+            double base,altura;
+
+            base=0;
+            altura=0;
+
     }
 }

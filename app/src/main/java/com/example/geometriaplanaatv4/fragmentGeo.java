@@ -16,6 +16,7 @@ public class fragmentGeo extends AppCompatActivity {
     private EditText et_valorB,et_valorA;
     private FragmentTriangulo fragmentTriangulo;
     private FragmentTrapezio fragmentTrapezio;
+    private FragmentLosango fragmentLosango;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,7 @@ public class fragmentGeo extends AppCompatActivity {
         bt_trapezio = findViewById(R.id.bt_trapezio);
         bt_losangulo = findViewById(R.id.bt_losango);
         bt_calcular = findViewById(R.id.bt_calcular);
-        et_valorA = findViewById(R.id.et_valorA);
-        et_valorB = findViewById(R.id.et_valorB);
+
 
         fragmentTriangulo = new FragmentTriangulo();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -40,7 +40,7 @@ public class fragmentGeo extends AppCompatActivity {
             public void onClick(View view) {
                 fragmentTriangulo = new FragmentTriangulo();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.frame_conteudo,fragmentTriangulo);
+                fragmentTransaction.replace(R.id.frame_conteudo,fragmentTriangulo);
                 fragmentTransaction.commit();
             }
         });
@@ -49,31 +49,20 @@ public class fragmentGeo extends AppCompatActivity {
             public void onClick(View view) {
                 fragmentTrapezio = new FragmentTrapezio();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.frame_conteudo,fragmentTrapezio);
+                fragmentTransaction.replace(R.id.frame_conteudo,fragmentTrapezio);
                 fragmentTransaction.commit();
             }
         });
-        bt_calcular.setOnClickListener(new View.OnClickListener() {
+        bt_losangulo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double valorAl=0,valorB=0,are=0;
-                valorAl = Double.parseDouble(et_valorA.getText().toString());
-                valorB = Double.parseDouble(et_valorB.getText().toString());
-                are = (valorB*valorAl)/2;
-
-                if(et_valorA==null || et_valorB ==null){
-                    Toast.makeText(fragmentGeo.this, "Preencha todos os campos por favor", Toast.LENGTH_LONG).show();
-                }else{
-                    AlertDialog.Builder janela = new AlertDialog.Builder(fragmentGeo.this);
-                    janela.setTitle("GEOMETRIA PLANA");
-                    janela.setMessage(String.format("A área do triângulo é: %.2f",are));
-                    janela.show();
-                }
-
-
-
+                fragmentLosango = new FragmentLosango();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame_conteudo,fragmentLosango);
+                fragmentTransaction.commit();
             }
         });
+
 
 
     }

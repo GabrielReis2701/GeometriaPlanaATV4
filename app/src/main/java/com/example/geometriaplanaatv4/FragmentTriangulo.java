@@ -18,13 +18,15 @@ import android.widget.Toast;
  * Use the {@link FragmentTriangulo#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentTriangulo extends Fragment{
+public class FragmentTriangulo extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private View construtor;
+    private EditText et_valorA,et_valorB;
+    private Button bt_calcular;
 
 
     // TODO: Rename and change types of parameters
@@ -69,7 +71,44 @@ public class FragmentTriangulo extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_triangulo, container, false);
+        construtor = inflater.inflate(R.layout.fragment_triangulo, container, false);
+        et_valorA = construtor.findViewById(R.id.et_valorA);
+        et_valorB = construtor.findViewById(R.id.et_valorB);
+        bt_calcular = construtor.findViewById(R.id.bt_calcular);
+
+        bt_calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double area,base,altura;
+                boolean erro = false;
+                try{
+                    base = Double.parseDouble(et_valorB.getText().toString());
+                    altura = Double.parseDouble(et_valorA.getText().toString());
+                }catch (Exception e){
+                    base =0;
+                    altura=0;
+                    erro = true;
+                }
+                if ((base==0 || altura ==0) && erro==true){
+                    AlertDialog.Builder janela = new AlertDialog.Builder(getActivity());
+                    janela.setTitle("Calculo do Triangulo");
+                    janela.setMessage("Erro! Por favor preencha todos os campos");
+                    janela.setNeutralButton("OK",null);
+                    janela.show();
+                }else{
+                    area = (base*altura)/2;
+                    AlertDialog.Builder janela = new AlertDialog.Builder(getActivity());
+                    janela.setTitle("Calculo do Triangulo");
+                    janela.setMessage("O Valor da Area é: "+ area);
+                    janela.setNeutralButton("OK",null);
+                    janela.show();
+                }
+
+            }
+        });
+
+
+        return construtor;
 
     }
 }

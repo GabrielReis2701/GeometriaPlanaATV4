@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/triangulo_personalizado">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -31,7 +32,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            android:text="Área de Triângulo"
+            android:text="ÁREA DO TRIÂNGULO"
             android:textColor="#2196F3"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -75,7 +76,7 @@
             android:layout_width="263dp"
             android:layout_height="52dp"
             android:layout_marginTop="48dp"
-            android:background="@drawable/personalizado"
+            android:background="@drawable/personalizado2"
             android:text="Calcular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

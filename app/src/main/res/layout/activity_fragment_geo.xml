@@ -25,7 +25,7 @@
         android:id="@+id/bt_triangulo"
         android:layout_width="138dp"
         android:layout_height="47dp"
-        android:background="@color/purple_200"
+        android:background="#580DB3"
         android:text="Triângulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
@@ -36,7 +36,7 @@
         android:id="@+id/bt_trapezio"
         android:layout_width="139dp"
         android:layout_height="47dp"
-        android:background="@color/purple_200"
+        android:background="#580DB3"
         android:text="trapézio"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
@@ -47,7 +47,7 @@
         android:id="@+id/bt_losango"
         android:layout_width="141dp"
         android:layout_height="47dp"
-        android:background="@color/purple_200"
+        android:background="#580DB3"
         android:text="losango"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,17 +56,15 @@
 
     <FrameLayout
         android:id="@+id/frame_conteudo"
-        android:layout_width="403dp"
-        android:layout_height="646dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="411dp"
+        android:layout_height="683dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_trapezio"
-        app:layout_constraintVertical_bias="0.033">
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 

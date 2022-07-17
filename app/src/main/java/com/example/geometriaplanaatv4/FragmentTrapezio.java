@@ -2,11 +2,14 @@ package com.example.geometriaplanaatv4;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +22,9 @@ public class FragmentTrapezio extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private View construtor;
+    private EditText et_valorBaseMaior,et_valorBaseMenor,et_valorA;
+    private Button bt_calcular;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -60,13 +66,46 @@ public class FragmentTrapezio extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trapezio, container, false);
-    }
-    public class valores {
-            double base,altura;
+        construtor =  inflater.inflate(R.layout.fragment_trapezio, container, false);
+        et_valorA = construtor.findViewById(R.id.et_valorAlturaTrape);
+        et_valorBaseMaior = construtor.findViewById(R.id.et_valorBMaior);
+        et_valorBaseMenor = construtor.findViewById(R.id.et_valorBMenor);
+        bt_calcular = construtor.findViewById(R.id.bt_calcularTrape);
 
-            base=0;
-            altura=0;
+        bt_calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double area,altura=0,baseMenor=0,baseMaior=0;
+                boolean erro=false;
+                try{
+                    baseMaior = Double.parseDouble(et_valorBaseMaior.getText().toString());
+                    baseMenor = Double.parseDouble(et_valorBaseMenor.getText().toString());
+                    altura = Double.parseDouble(et_valorA.getText().toString());
+                }catch (Exception e){
+                    baseMaior =0;
+                    altura=0;
+                    baseMenor=0;
+                    erro = true;
+                }
 
+                if((baseMaior == 0 || baseMenor == 0 || altura ==0)&& erro == true){
+                    AlertDialog.Builder janela2 = new AlertDialog.Builder(getActivity());
+                    janela2.setTitle("Calculo do Trapézio");
+                    janela2.setMessage("ERRO! Por favor preencha todos os campos antes de continuar");
+                    janela2.setNeutralButton("OK",null);
+                    janela2.show();
+                }else{
+                    area = ((baseMaior+baseMenor)*altura)/2;
+                    AlertDialog.Builder janela = new AlertDialog.Builder(getActivity());
+                    janela.setTitle("Calculo do Trapézio");
+                    janela.setMessage("A Área do Trapézio é: "+area);
+                    janela.setNeutralButton("OK",null);
+                    janela.show();
+                }
+
+            }
+        });
+
+        return construtor;
     }
 }

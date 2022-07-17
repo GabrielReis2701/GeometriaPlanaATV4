@@ -2,11 +2,14 @@ package com.example.geometriaplanaatv4;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +22,9 @@ public class FragmentLosango extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private View construtor;
+    private EditText et_DMaior, et_DMenor;
+    private Button bt_calcular;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +65,43 @@ public class FragmentLosango extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_losango, container, false);
+        construtor =  inflater.inflate(R.layout.fragment_losango, container, false);
+
+        et_DMaior = construtor.findViewById(R.id.et_DMaior);
+        et_DMenor = construtor.findViewById(R.id.et_DMenor);
+        bt_calcular = construtor.findViewById(R.id.bt_calcularLosango);
+
+        bt_calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double diagonalMaior =0, diagonalMenor=0,area=0;
+                boolean erro =false;
+                try {
+                    diagonalMaior = Double.parseDouble(et_DMaior.getText().toString());
+                    diagonalMenor = Double.parseDouble(et_DMenor.getText().toString());
+                }catch (Exception e){
+                    diagonalMaior=0;
+                    diagonalMenor=0;
+                    erro = true;
+                }
+                if((diagonalMaior == 0 || diagonalMenor == 0) && erro == true){
+                    AlertDialog.Builder janela = new AlertDialog.Builder(getActivity());
+                    janela.setTitle("Calculo do Losango");
+                    janela.setMessage("ERRO! Por favor preencha todos os campos");
+                    janela.setNeutralButton("OK",null);
+                    janela.show();
+                }else{
+                    area = (diagonalMaior*diagonalMenor)/2;
+                    AlertDialog.Builder janela = new AlertDialog.Builder(getActivity());
+                    janela.setTitle("Calculo do Losango");
+                    janela.setMessage("A Área do Losango é: "+ area);
+                    janela.setNeutralButton("OK",null);
+                    janela.show();
+
+                }
+            }
+        });
+
+        return construtor;
     }
 }
